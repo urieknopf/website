@@ -13,10 +13,11 @@ class Command(BaseCommand):
         while db_up is False:
             try:
                 self.check(databases=['default'])
+                self.stdout.write('Wait for database to start.')
                 db_up = True
             except (Psychopg20pError, OperationalError):
                 self.wait = 1
-                self.stdout.write(f'Waiting for database...')
+                self.stdout.write(f'Waiting for database...{self.wait} second/s')
                 time.sleep(self.wait)
         
         self.stdout.write(self.style.SUCCESS('Database ready.'))
