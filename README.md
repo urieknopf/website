@@ -1,2 +1,2 @@
 # website
-Personal website placeholder code
+Personal website code
